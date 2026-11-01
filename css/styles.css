@@ -1,0 +1,325 @@
+/* =========================================================
+   BASE
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ink: #111;
+  --paper: #fff;
+  --red: #e0545a;
+  --green: #5fa86f;
+  --yellow: #c9b45a;
+  --content-width: 1000px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 9rem; /* para que la barra fija no tape los títulos al navegar */
+}
+
+body {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  color: var(--ink);
+
+  /* GIF de fondo: se queda quieto mientras haces scroll */
+  background-color: var(--paper);
+  background-image: url("../img/background2.2.gif");
+  background-attachment: fixed;
+  background-size: cover; /* si tu gif es un patrón pequeño, prueba: auto + background-repeat: repeat */
+  background-position: center;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: inherit;
+}
+p {
+  margin: 0 0 0.75rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   BARRA DE NAVEGACIÓN (fija)
+   ========================================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 3px solid #333;
+}
+
+.navbar__inner {
+  display: flex; /* logo a la izquierda, info a la derecha */
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar__logo img {
+  height: 5.5rem;
+  width: auto;
+}
+
+.navbar__info {
+  display: flex; /* nombre arriba, botones abajo */
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.navbar__name {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-weight: 800;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 0.6rem 0.1rem;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.nav-link--red {
+  --accent: var(--red);
+}
+.nav-link--red:hover {
+  background-color: #e0545a;
+}
+.nav-link--green {
+  --accent: var(--green);
+}
+.nav-link--yellow {
+  --accent: var(--yellow);
+}
+.nav-link--green:hover {
+  background-color: #5fa86f;
+}
+.nav-link--yellow:hover {
+  background-color: #c9b45a;
+}
+.lang-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.5rem;
+  font: inherit;
+  font-weight: 800;
+  padding: 0.1rem 0.7rem;
+  background: none;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+}
+.lang-btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+/* =========================================================
+   CONTENIDO (blanco semitransparente sobre el gif)
+   ========================================================= */
+.content {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 2.5rem 1.5rem 4rem;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.85
+  ); /* baja o sube el 0.85 para más o menos opacidad */
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Tarjeta con foto */
+.profile {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.profile__photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.profile__box {
+  background: #d9d9d9;
+  padding: 1.25rem 1.5rem;
+}
+.profile__name {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.profile__role {
+  font-weight: 800;
+}
+
+/* Avatar + texto + herramientas */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(120px, 180px) 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.intro__avatar {
+  width: 100%;
+}
+
+.intro__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.intro__text {
+  background: var(--paper);
+  padding: 1.25rem 1.5rem;
+}
+.intro__text p:last-child {
+  margin-bottom: 0;
+}
+
+.tools {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tools img {
+  height: 4.5rem;
+  width: auto;
+}
+
+/* =========================================================
+   WORKS
+   ========================================================= */
+.works__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* Cada proyecto = foto de portada + marco vectorial encima */
+.project {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+.project__cover {
+  position: absolute;
+  inset: 9% 10% 10% 9%; /* el hueco de adentro del marco */
+  width: 81%;
+  height: 81%;
+  object-fit: cover;
+  border-radius: 0.8rem;
+}
+.project__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* el clic pasa al enlace */
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+.contact {
+  display: flex;
+  justify-content: center;
+}
+.note {
+  width: 300px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 3rem 1.5rem 1.5rem;
+  background: url("../img/nota.svg") center / 100% 100% no-repeat;
+  text-align: center;
+}
+.note__line {
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 12rem;
+  }
+  .navbar__inner {
+    gap: 1rem;
+  }
+  .navbar__logo img {
+    height: 4rem;
+  }
+  .navbar__name {
+    font-size: 1.3rem;
+    letter-spacing: 0.2em;
+  }
+  .navbar__links {
+    gap: 1.25rem;
+  }
+
+  .profile,
+  .intro {
+    grid-template-columns: 1fr;
+  }
+  .intro__avatar {
+    max-width: 160px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

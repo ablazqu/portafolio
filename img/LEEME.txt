@@ -1,0 +1,18 @@
+Guarda aqui tus imagenes con EXACTAMENTE estos nombres:
+
+img/blaz.svg            logo BLAZ (vector)
+img/fondo.gif           gif de fondo
+img/foto-perfil.jpg     tu foto (tarjeta con nombre)
+img/avatar.png          tu ilustracion con la taza
+img/tool-ai.png         icono Illustrator
+img/tool-ps.png         icono Photoshop
+img/tool-id.png         icono InDesign
+img/tool-figma.png      icono Figma
+img/marco.svg           marco negro dibujado (plantilla projects)
+img/nota.svg            hoja de papel de contacto
+
+img/projects/origen.jpg  portada Origen Cafe
+img/projects/minka.jpg   portada Mink'a
+img/projects/frame.jpg   portada FRAME
+
+Desde Figma: selecciona el elemento > Export (panel derecho) > SVG para vectores, PNG/JPG para el resto.

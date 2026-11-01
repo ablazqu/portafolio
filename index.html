@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Antonia Blázquez A. – BLAZ</title>
+
+    <!-- Tipografía: cámbiala por la que uses en Figma (fonts.google.com) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- ================= BARRA DE NAVEGACIÓN (fija arriba) ================= -->
+    <header class="navbar">
+      <div class="navbar__inner">
+        <a class="navbar__logo" href="#top">
+          <img src="img/blaz.svg" alt="BLAZ" />
+        </a>
+
+        <div class="navbar__info">
+          <p class="navbar__name">Antonia Blázquez A.</p>
+          <nav class="navbar__links" aria-label="Main">
+            <a
+              class="nav-link nav-link--red"
+              href="#about"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              class="nav-link nav-link--green"
+              href="#works"
+              data-i18n="nav.works"
+              >Works</a
+            >
+            <a
+              class="nav-link nav-link--yellow"
+              href="#contact"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </nav>
+        </div>
+        <button class="lang-btn" id="lang-btn" type="button">ES</button>
+      </div>
+    </header>
+
+    <!-- ================= CONTENIDO (fondo blanco semitransparente) ================= -->
+    <main class="content" id="top">
+      <img src="img/blaz.svg" alt="BLAZ" />
+      <!-- ---------- ABOUT ---------- -->
+      <section class="about" id="about">
+        <!-- Tarjeta con foto + nombre (si no la quieres, borra este bloque) -->
+        <article class="profile">
+          <img
+            class="profile__photo"
+            src="img/21.jpg"
+            alt="Portrait of Antonia"
+          />
+          <div class="profile__box">
+            <h1 class="profile__name">Antonia Blázquez Aravena</h1>
+            <p class="profile__role" data-i18n="profile.role">Graphic Design</p>
+            <p class="profile__bio" data-i18n="profile.bio">
+              Average Millenial who decide to bring the stuff from her satirical
+              mind to the creative work. Passionate about develop memorable
+              projects, hopefully involving the physical world so everyone can
+              have a piece of it. Pretty much into: visual identity,
+              storytelling and packaging.
+            </p>
+          </div>
+        </article>
+
+        <!-- Avatar + texto + herramientas -->
+        <div class="intro">
+          <img
+            class="intro__avatar"
+            src="img/doodle1.svg"
+            alt="Illustrated self-portrait holding a mug"
+          />
+
+          <div class="intro__body">
+            <div class="intro__text">
+              <p data-i18n="intro.p1">
+                Currently studying graphic design, I'm interested in being part
+                of projects that people would experience beyond the screen.
+              </p>
+              <p data-i18n="intro.p2">
+                I'm a fan of good sense of humor that does not just try to make
+                you laugh but to show a different perspective from a situation.
+                I use my creativity to find and show the personality of each
+                project.
+              </p>
+              <p data-i18n="intro.p3">
+                I specialized on storytelling, packaging and photography.
+              </p>
+            </div>
+
+            <ul class="tools">
+              <li><img src="img/illustrator.svg" alt="Adobe Illustrator" /></li>
+              <li><img src="img/photoshop.svg" alt="Adobe Photoshop" /></li>
+              <li><img src="img/indesign.svg" alt="Adobe InDesign" /></li>
+              <li><img src="img/figma.svg" alt="Figma" /></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- WORKS ----------
+         Las tarjetas se generan solas desde js/projects.js -->
+      <section class="works" id="works">
+        <h2 class="visually-hidden">Works</h2>
+        <div class="works__grid" id="works-grid"></div>
+      </section>
+
+      <!-- ---------- CONTACT ---------- -->
+      <section class="contact" id="contact">
+        <h2 class="visually-hidden">Contact</h2>
+        <div class="note">
+          <a class="note__line" href="mailto:tu-correo@gmail.com"
+            >ablazaravena@gmail.com</a
+          >
+          <a
+            class="note__line"
+            href="https://www.instagram.com/blazz._/"
+            target="_blank"
+            rel="noopener"
+            >@blazz._</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- projects.js primero (los datos), main.js después (los usa) -->
+    <script src="js/projects.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
+  </body>
+</html>
