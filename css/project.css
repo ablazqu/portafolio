@@ -1,0 +1,205 @@
+/* =========================================================
+   PÁGINA DE PROYECTO: ORIGEN CAFÉ
+   (se carga DESPUÉS de styles.css y lo sobrescribe donde haga falta)
+   ========================================================= */
+body.project {
+  --origen-cream: #e9debf;
+  --origen-brown: #502a17;
+  --origen-red: #bf403d;
+
+  /* Rojo oscuro de fondo. Esta línea también quita el gif del inicio */
+  background: #a22a29;
+}
+
+/* ---------- Hojas de fondo ----------
+   Una capa fija con una imagen a cada lado. Se queda quieta al hacer scroll.
+   Funciona también en móvil (a diferencia de background-attachment: fixed). */
+body.project::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    url('../img/origen/hojas-izq.png'),
+    url('../img/origen/hojas-der.png');
+  background-repeat: no-repeat;
+  background-position: left top, right top;
+  background-size: auto 100%, auto 100%;   /* las hojas ocupan todo el alto de la pantalla */
+}
+
+/* ---------- Contenedor ---------- */
+body.project .content {
+  max-width: 900px;
+  min-height: 0;
+  gap: 2.5rem;
+  padding: 2.5rem 1.5rem 4rem;
+  background: transparent;                 /* aquí se ven las hojas */
+  font-family: 'Zilla Slab', serif;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--origen-brown);
+}
+
+.origen-logo { display: flex; justify-content: center; }
+.origen-logo img { height: 7rem; width: auto; }
+
+/* Bloque crema (tarjeta de contenido) */
+.block {
+  background: var(--origen-cream);
+  padding: 1.5rem;
+}
+.block h2 {
+  margin: 0 0 1rem;
+  font-family: 'Zilla Slab', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.photo { margin: 0; }
+.photo img { width: 100%; }
+
+/* ---------- Banner de introducción ---------- */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.75rem;
+}
+.intro p { margin: 0; }
+.intro__logo {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--origen-brown);
+}
+
+/* ---------- Logotipos ---------- */
+.logos {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+}
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+.logo-tile {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  padding: 0.5rem;
+  background: var(--origen-brown);
+}
+.logo-tile img { max-height: 100%; width: auto; }
+
+/* ---------- Paleta y tipografía ---------- */
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+.swatches li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+}
+.swatch {
+  width: 110px;
+  height: 110px;
+  background: var(--color);
+  border: 2px solid var(--origen-brown);
+}
+
+.type-samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.type-sample { margin: 0; display: flex; flex-direction: column; }
+.type-sample span { font-size: 3rem; line-height: 1; }
+/* Si tienes las fuentes originales instaladas se usan; si no, los sustitutos */
+.type-sample--rockwell { font-family: 'Rockwell', 'Zilla Slab', serif; }
+.type-sample--showcard { font-family: 'Showcard Gothic', 'Alfa Slab One', serif; }
+
+/* =========================================================
+   CARRUSEL
+   ========================================================= */
+.carousel { position: relative; }
+
+.carousel__viewport {
+  overflow: hidden;            /* oculta las fotos que no toca mostrar */
+  background: var(--origen-cream);
+}
+.carousel__track {
+  display: flex;               /* todas las fotos en fila horizontal */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.7s ease-in-out;   /* velocidad del deslizamiento */
+}
+.carousel__slide { flex: 0 0 100%; }        /* cada foto ocupa todo el ancho */
+.carousel__slide img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.carousel__btn {
+  position: absolute;
+  top: calc(50% - 1.2rem);
+  transform: translateY(-50%);
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--origen-cream);
+  color: var(--origen-brown);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.carousel__btn--prev { left: 0.75rem; }
+.carousel__btn--next { right: 0.75rem; }
+.carousel__btn:hover { background: #fff; }
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+}
+.carousel__dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  padding: 0;
+  border: 2px solid var(--origen-cream);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.carousel__dot.is-active { background: var(--origen-cream); }
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+@media (max-width: 700px) {
+  body.project::before { background-size: auto 60%, auto 60%; opacity: 0.6; }
+  .intro,
+  .logos { grid-template-columns: 1fr; }
+  .intro__logo { max-width: 200px; }
+  .origen-logo img { height: 5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__track { transition: none; }
+}

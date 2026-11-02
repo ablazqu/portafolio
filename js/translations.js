@@ -11,6 +11,13 @@ const translations = {
     "intro.p2":
       "I'm a fan of good sense of humor that does not just try to make you laugh but to show a different perspective from a situation. I use my creativity to find and show the personality of each project.",
     "intro.p3": "I specialized on storytelling, packaging and photography.",
+    // dentro de en: { ... }
+    "origen.intro":
+      "From the lands of Peru to our everyday lives in Sweden, coffee travels far beyond its origin. Along the way, it brings people together, creates moments and builds connections we may not even notice.",
+    "origen.logotype": "Main logotype",
+    "origen.variants": "Variants",
+    "origen.palette": "Color palette",
+    "origen.typography": "Typography",
   },
   es: {
     "nav.about": "Sobre mí",
@@ -23,5 +30,12 @@ const translations = {
     "intro.p2":
       "Soy fan del buen sentido del humor, ese que no solo busca hacerte reír, sino mostrar una perspectiva distinta de una situación. Uso mi creatividad para encontrar y mostrar la personalidad de cada proyecto.",
     "intro.p3": "Me especializo en storytelling, packaging y fotografía.",
+    // dentro de es: { ... }
+    "origen.intro":
+      "Desde las tierras de Perú hasta nuestro día a día en Suecia, el café viaja mucho más allá de su origen. En el camino, une a las personas, crea momentos y construye conexiones que quizás ni notamos.",
+    "origen.logotype": "Logotipo principal",
+    "origen.variants": "Variantes",
+    "origen.palette": "Paleta de colores",
+    "origen.typography": "Tipografía",
   },
 };

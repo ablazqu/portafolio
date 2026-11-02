@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Origen Café – BLAZ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Barlow Condensed = barra de navegación. Zilla Slab y Alfa Slab One = sustitutos de Rockwell y Showcard Gothic -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@300;400;800&family=Zilla+Slab:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Primero los estilos generales, después los de esta página (el orden importa) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/project.css" />
+  </head>
+
+  <!-- La clase "project" activa el fondo de hojas en lugar del gif -->
+  <body class="project">
+    <!-- ================= BARRA DE NAVEGACIÓN (igual que en el inicio) ================= -->
+    <header class="navbar">
+      <div class="navbar__inner">
+        <button class="lang-btn" id="lang-btn" type="button">ES</button>
+
+        <a class="navbar__logo" href="../index.html">
+          <img src="../img/blaz.svg" alt="BLAZ" />
+        </a>
+
+        <div class="navbar__info">
+          <p class="navbar__name">Antonia Blázquez A.</p>
+          <nav class="navbar__links" aria-label="Main">
+            <!-- "../index.html#about" = volver al inicio y bajar a esa sección -->
+            <a
+              class="nav-link nav-link--red"
+              href="../index.html#about"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              class="nav-link nav-link--green"
+              href="../index.html#works"
+              data-i18n="nav.works"
+              >Works</a
+            >
+            <a
+              class="nav-link nav-link--yellow"
+              href="../index.html#contact"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main class="content">
+      <!-- Logo de arriba -->
+      <div class="origen-logo">
+        <img src="../img/origen-cafe/logo-cafe-inicio.svg" alt="Origen Café" />
+      </div>
+
+      <!-- Banner: cuadro marrón con logo + texto -->
+      <section class="block intro">
+        <div class="intro__logo">
+          <img src="../img/origen-cafe/marca1.jpg" alt="Origen Café logo" />
+        </div>
+        <p data-i18n="origen.intro">
+          From the lands of Peru to our everyday lives in Sweden, coffee travels
+          far beyond its origin. Along the way, it brings people together,
+          creates moments and builds connections we may not even notice.
+        </p>
+      </section>
+
+      <!-- Foto de la fachada -->
+      <figure class="photo">
+        <img
+          src="../img/origen-cafe/logo-en-ventana.png"
+          alt="Origen Café sign on a storefront window"
+        />
+      </figure>
+
+      <!-- Logotipo principal + variantes -->
+      <section class="block logos">
+        <div class="logos__main">
+          <h2 data-i18n="origen.logotype">Main logotype</h2>
+          <div class="logo-tile">
+            <img src="../img/origen-cafe/logo.png" alt="Main logotype" />
+          </div>
+        </div>
+
+        <div class="logos__variants">
+          <h2 data-i18n="origen.variants">Variants</h2>
+          <div class="variants-grid">
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/logo-crema-letras.svg"
+                alt="Logo variant 1"
+              />
+            </div>
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/logo.crema.svg"
+                alt="Logo variant 2"
+              />
+            </div>
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/icono-crema.svg"
+                alt="Logo variant 3"
+              />
+            </div>
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/logo-cafeletras.svg"
+                alt="Logo variant 4"
+              />
+            </div>
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/logo-cafe.svg"
+                alt="Logo variant 5"
+              />
+            </div>
+            <div class="logo-tile">
+              <img
+                src="../img/origen-cafe/icono-cafe.svg"
+                alt="Logo variant 6"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paleta de color + tipografía -->
+      <section class="block palette">
+        <h2 data-i18n="origen.palette">Color palette</h2>
+        <ul class="swatches">
+          <!-- Cambia el código de color en --color y en el texto -->
+          <li><span class="swatch" style="--color: #e9debf"></span>#e9debf</li>
+          <li><span class="swatch" style="--color: #502a17"></span>#502a17</li>
+          <li><span class="swatch" style="--color: #bf403d"></span>#bf403d</li>
+        </ul>
+
+        <h2 data-i18n="origen.typography">Typography</h2>
+        <div class="type-samples">
+          <p class="type-sample type-sample--rockwell">
+            <span>Aa</span>Rockwell
+          </p>
+          <p class="type-sample type-sample--showcard">
+            <span>Aa</span>Showcard Gothic
+          </p>
+        </div>
+      </section>
+      <figure class="photo">
+        <img
+          src="../img/origen-cafe/14.jpg"
+          alt="Origen Café sign on a storefront window"
+        />
+      </figure>
+
+      <!-- ========== CARRUSEL DE MOCKUPS ==========
+         Para añadir una foto: copia un <li class="carousel__slide">...</li>.
+         Para cambiar la velocidad: data-interval en milisegundos (4000 = 4 segundos). -->
+      <section
+        class="carousel"
+        data-interval="4000"
+        aria-roledescription="carousel"
+        aria-label="Mockups"
+      >
+        <div class="carousel__viewport">
+          <ul class="carousel__track">
+            <li class="carousel__slide">
+              <img
+                src="../img/origen-cafe/barista-bolsa.jpg"
+                alt="Origen Café cups held by two hands"
+              />
+            </li>
+            <li class="carousel__slide">
+              <img
+                src="../img/origen-cafe/5.1.jpg"
+                alt="Origen Café t-shirt mockup"
+              />
+            </li>
+            <li class="carousel__slide">
+              <img
+                src="../img/origen-cafe/tote3.jpg"
+                alt="Origen Café mockup 3"
+              />
+            </li>
+          </ul>
+        </div>
+
+        <button
+          class="carousel__btn carousel__btn--prev"
+          type="button"
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        <button
+          class="carousel__btn carousel__btn--next"
+          type="button"
+          aria-label="Next"
+        >
+          ›
+        </button>
+        <div class="carousel__dots"></div>
+        <!-- los puntos los crea carousel.js -->
+      </section>
+
+      <!-- GIF final -->
+      <figure class="photo">
+        <video
+          src="../img/origen-cafe/16_2.mp4"
+          alt="Coffee being poured into an Origen Café cup"
+        ></video>
+      </figure>
+    </main>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/carousel.js"></script>
+  </body>
+</html>

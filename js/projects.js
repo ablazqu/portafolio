@@ -20,7 +20,7 @@ const projects = [
   },
   {
     title: "FRAME",
-    cover: "img/frame/framfejpg.jpg",
+    cover: "img/frame/frame.svg",
     url: "projects/frame.html",
   },
 ];

@@ -1,17 +1,19 @@
 // Construye las tarjetas de proyectos a partir del array "projects"
 const grid = document.getElementById("works-grid");
 
-grid.innerHTML = projects
-  .map(function (project) {
-    return `
-      <a class="project" href="${project.url}">
-        <img class="project__cover" src="${project.cover}" alt="">
-        <img class="project__frame" src="img/proejctsframe.svg" alt="">
-        <span class="visually-hidden">${project.title}</span>
-      </a>
-    `;
-  })
-  .join("");
+if (grid) {
+  grid.innerHTML = projects
+    .map(function (project) {
+      return `
+        <a class="project" href="${project.url}">
+          <img class="project__cover" src="${project.cover}" alt="">
+          <img class="project__frame" src="img/marco.svg" alt="">
+          <span class="visually-hidden">${project.title}</span>
+        </a>
+      `;
+    })
+    .join("");
+}
 // ---------- Cambio de idioma ----------
 const langButton = document.getElementById("lang-btn");
 
