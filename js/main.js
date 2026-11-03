@@ -15,31 +15,37 @@ if (grid) {
     .join("");
 }
 // ---------- Cambio de idioma ----------
-const langButton = document.getElementById("lang-btn");
+// ---------- Cambio de idioma ----------
+const langButton = document.getElementById('lang-btn');
+const LANG_KEY = 'blaz-lang';   // nombre con el que se guarda la elección
 
 function setLanguage(lang) {
   document.documentElement.lang = lang;
 
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    el.textContent = translations[lang][el.dataset.i18n];
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    const text = translations[lang][el.dataset.i18n];
+    if (text) {
+      el.textContent = text;
+    }
   });
 
   // El botón muestra el idioma al que se puede cambiar
-  langButton.textContent = lang === "en" ? "ES" : "EN";
-  langButton.setAttribute(
-    "aria-label",
-    lang === "en" ? "Cambiar a español" : "Switch to English",
-  );
-
-  localStorage.setItem("lang", lang); // recuerda la elección
+  langButton.textContent = lang === 'en' ? 'ES' : 'EN';
+  langButton.setAttribute('aria-label', lang === 'en' ? 'Cambiar a español' : 'Switch to English');
 }
 
-langButton.addEventListener("click", function () {
-  const current = document.documentElement.lang;
-  setLanguage(current === "en" ? "es" : "en");
+langButton.addEventListener('click', function () {
+  const next = document.documentElement.lang === 'en' ? 'es' : 'en';
+  setLanguage(next);
+  try {
+    localStorage.setItem(LANG_KEY, next);   // solo se guarda cuando la PERSONA elige
+  } catch (e) {}
 });
 
-// Al cargar: idioma guardado, o el del navegador, o inglés
-const saved = localStorage.getItem("lang");
-const browserIsSpanish = navigator.language.startsWith("es");
-setLanguage(saved || (browserIsSpanish ? "es" : "en"));
+// Al cargar cualquier página: el idioma que la persona eligió antes.
+// Si nunca eligió, siempre inglés (se ignora el idioma del navegador).
+let saved = null;
+try {
+  saved = localStorage.getItem(LANG_KEY);
+} catch (e) {}
+setLanguage(saved === 'es' ? 'es' : 'en');
