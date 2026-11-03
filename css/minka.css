@@ -1,0 +1,137 @@
+/* =========================================================
+   PÁGINA DE PROYECTO: MINK'A
+   (se carga DESPUÉS de styles.css y lo sobrescribe donde haga falta)
+   ========================================================= */
+body.page-minka {
+  --minka-box: #f4f4f4;     /* fondo de las cajas de texto */
+  --minka-pink: #ff6fb5;    /* cuadro rosado */
+
+  /* Gris claro de respaldo mientras carga la imagen.
+     Esta línea también quita el gif del inicio. */
+  background: #d9d9d9;
+  background-image: url("../img/mink'a/fondopng.png");
+}
+
+/* ---------- Fondo con dibujos ----------
+   Una capa fija que cubre TODA la pantalla y se queda quieta al hacer scroll.
+   Funciona también en móvil. */
+body.page-minka::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url('../img/minka/fondo.png') center / cover no-repeat;
+
+  /* Si prefieres que los dibujos se REPITAN como un patrón en vez de estirarse,
+     reemplaza la línea de arriba por esta:
+     background: url('../img/minka/fondo.png') top left / 520px auto repeat;  */
+}
+
+/* ---------- Contenedor ---------- */
+body.page-minka .content {
+  max-width: 900px;
+  min-height: 0;
+  gap: 2.5rem;
+  padding: 2.5rem 1.5rem 4rem;
+  background: transparent;                 /* aquí se ve el fondo con dibujos */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #111;
+}
+
+.content figure { margin: 0; }
+.content img { width: 100%; }
+
+/* Caja de texto */
+.m-box {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--minka-box);
+  border-radius: 0.6rem;
+}
+
+/* ---------- 1. INTRODUCING ---------- */
+.m-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.5rem 1.5rem;
+  background: var(--minka-box);
+  border-radius: 0.6rem;
+  text-align: center;
+}
+.m-intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.m-intro img { width: 130px; }
+
+/* ---------- 2. Logo + texto  |  foto ---------- */
+.m-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+.m-about__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+}
+.m-about__logo { max-width: 280px; }
+.m-about__photo {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.6rem;
+}
+
+/* ---------- Fotos anchas ---------- */
+.m-photo img { border-radius: 0.6rem; }
+
+/* ---------- 4. Texto + cuadro rosado ---------- */
+.m-quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.m-quote__video {
+  display: block;
+  width: 100%;              /* ocupa solo el ancho de su columna */
+  aspect-ratio: 9 / 16;     /* proporción del video (vertical) */
+  object-fit: cover;        /* llena el cuadro sin deformar la imagen */
+  border-radius: 0.3rem;
+  background: var(--minka-pink);   /* se ve rosado mientras el video carga */
+}
+
+/* ---------- 7. Mockups web ---------- */
+.m-web {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ---------- 8. Afiche ---------- */
+.m-poster { max-width: 520px; margin: 0 auto; width: 100%; }
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+@media (max-width: 700px) {
+  .m-about,
+  .m-quote { grid-template-columns: 1fr; }
+  .m-about__photo { height: auto; }
+ .m-quote__video { max-width: 260px; margin: 0 auto; }
+  .m-web { grid-template-columns: 1fr; }
+}

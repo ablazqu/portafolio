@@ -18,7 +18,17 @@ const translations = {
     "origen.variants": "Variants",
     "origen.palette": "Color palette",
     "origen.typography": "Typography",
-  },
+    // dentro de en: { ... }
+"minka.introducing": "Introducing. . .",
+"minka.about": "Our studio offers spaces for both individual and group  work, as well as common areas where you can connect with others and clear your mind when facing a creative block. Don’t have a project right now but want to see our memebers’ work? We host workshops and presentations. Follow us on Instagram to stay connected! ",
+"minka.quote": "True to the meaning of the word, at Mink’a we believe that sharing our ideas and projects - and the diverse perspectives that come with them - helps us grow as a community and refine our work.",
+// dentro de en: { ... }
+"frame.details": "The style is in the details. FRAME comes packed for jungle windows, bus trips, cinemas or the sun itself. Wherever you're looking, the focus is on you.",
+"frame.traditional": "Traditional eyewear was built to fit in. FRAME wants to stand out. Our Italian collection merges modern streetwear with precision craftsmanship. Designed for the style-conscious individual, each pair aims to turn every street into your runway. Clothes go with the seasons, but perspective is permanent.",
+"frame.tagline": "Step out - Stand out - WEAR IT WITH STYLE.",
+"frame.mission": "Our mission remains clear: to connect with modern, style-conscious individuals through frames that make a statement. Every glass tells a story, every frame opens a new perspective. Frame the world around you.",
+"frame.welcome": "Welcome to" 
+},
   es: {
     "nav.about": "Sobre mí",
     "nav.works": "Trabajos",
@@ -37,5 +47,15 @@ const translations = {
     "origen.variants": "Variantes",
     "origen.palette": "Paleta de colores",
     "origen.typography": "Tipografía",
-  },
+    // dentro de es: { ... }
+"minka.introducing": "Presentando. . .",
+"minka.about": "Escribe aquí la descripción de tu proyecto.",
+"minka.quote": "Fiel al significado de la palabra, en Mink'a creemos que compartir nuestras ideas y proyectos, y las perspectivas diversas que surgen con ellos, nos ayuda a crecer como comunidad y a perfeccionar nuestro trabajo.",
+// dentro de es: { ... }
+"frame.details": "El estilo está en los detalles. FRAME viene listo para ventanas de la jungla, viajes en bus, cines o el mismo sol. Mires donde mires, el foco eres tú.",
+"frame.traditional": "Los lentes tradicionales se hicieron para pasar desapercibidos. FRAME quiere destacar. Nuestra colección italiana combina la moda urbana moderna con artesanía de precisión. Pensado para quienes tienen estilo, cada par busca convertir cada calle en tu pasarela. La ropa cambia con las estaciones, pero la perspectiva es permanente.",
+"frame.tagline": "Sal, destaca, LLÉVALO CON ESTILO.",
+"frame.mission": "Nuestra misión sigue siendo clara: conectar con personas modernas y con estilo a través de monturas que hagan una declaración. Cada lente cuenta una historia, cada montura abre una nueva perspectiva. Enmarca el mundo que te rodea.",
+"frame.welcome": "Bienvenido a" 
+},
 };

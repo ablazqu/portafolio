@@ -1,0 +1,100 @@
+/* =========================================================
+   HISTORIAS (estilo Instagram)
+   Una imagen centrada que se desliza sola, con barras de progreso arriba.
+   ========================================================= */
+.stories {
+  --story-time: 4000ms;           /* lo reemplaza stories.js con data-interval */
+  display: flex;
+  justify-content: center;
+}
+
+/* El "teléfono": proporción vertical 9:16 como una historia de IG */
+.stories__phone {
+  position: relative;
+  width: min(100%, 340px);        /* ancho máximo de la historia */
+  aspect-ratio: 9 / 16;           /* cámbialo si tus imágenes tienen otra proporción */
+  overflow: hidden;               /* oculta las imágenes que no tocan */
+  border-radius: 1.5rem;
+  background: #111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  touch-action: pan-y;            /* en celular, el deslizar horizontal lo maneja el código */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Imágenes en fila horizontal: se mueven de lado como un deslizamiento */
+.stories__track {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stories__slide { flex: 0 0 100%; height: 100%; }
+.stories__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* llena la historia; usa "contain" si no quieres recortes */
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* ---------- Barras de progreso ---------- */
+.stories__bars {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.3rem;
+  pointer-events: none;
+}
+.stories__bar {
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.35);
+}
+.stories__fill {
+  width: 0;
+  height: 100%;
+  background: #fff;
+}
+.stories__bar.is-done .stories__fill { width: 100%; }
+.stories__bar.is-active .stories__fill {
+  animation: story-fill var(--story-time) linear forwards;
+}
+@keyframes story-fill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+.stories.is-paused .stories__bar.is-active .stories__fill {
+  animation-play-state: paused;
+}
+
+/* ---------- Zonas para tocar (izquierda = atrás, derecha = adelante) ---------- */
+.stories__tap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.stories__tap--prev { left: 0;  width: 35%; }
+.stories__tap--next { right: 0; width: 65%; }
+.stories__tap:focus-visible { outline: 3px solid #fff; outline-offset: -3px; }
+
+/* Si la persona pidió "menos movimiento": sin deslizamiento ni cambio automático */
+@media (prefers-reduced-motion: reduce) {
+  .stories__track { transition: none; }
+  .stories__bar.is-active .stories__fill { animation: none; width: 100%; }
+}

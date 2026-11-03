@@ -95,24 +95,15 @@
         <div class="logos__variants">
           <h2 data-i18n="origen.variants">Variants</h2>
           <div class="variants-grid">
-            <div class="logo-tile">
-              <img
-                src="../img/origen-cafe/logo-crema-letras.svg"
-                alt="Logo variant 1"
-              />
-            </div>
-            <div class="logo-tile">
-              <img
-                src="../img/origen-cafe/logo.crema.svg"
-                alt="Logo variant 2"
-              />
-            </div>
-            <div class="logo-tile">
-              <img
-                src="../img/origen-cafe/icono-crema.svg"
-                alt="Logo variant 3"
-              />
-            </div>
+           <div class="logo-tile logo-tile--cream">
+  <img src="../img/origen-cafe/logo-crema-letras.svg" alt="Logo variant 1" />
+</div>
+<div class="logo-tile logo-tile--cream">
+  <img src="../img/origen-cafe/logo.crema.svg" alt="Logo variant 2" />
+</div>
+<div class="logo-tile logo-tile--cream">
+  <img src="../img/origen-cafe/icono-crema.svg" alt="Logo variant 3" />
+</div>
             <div class="logo-tile">
               <img
                 src="../img/origen-cafe/logo-cafeletras.svg"
@@ -139,22 +130,26 @@
       <section class="block palette">
         <h2 data-i18n="origen.palette">Color palette</h2>
         <ul class="swatches">
-          <!-- Cambia el código de color en --color y en el texto -->
-          <li><span class="swatch" style="--color: #e9debf"></span>#e9debf</li>
-          <li><span class="swatch" style="--color: #502a17"></span>#502a17</li>
-          <li><span class="swatch" style="--color: #bf403d"></span>#bf403d</li>
+          <li class="swatch" style="--color: #e9debf; --text: #502a17">
+            #e9debf
+          </li>
+          <li class="swatch" style="--color: #502a17; --text: #e9debf">
+            #502a17
+          </li>
+          <li class="swatch" style="--color: #bf403d; --text: #e9debf">
+            #bf403d
+          </li>
         </ul>
 
         <h2 data-i18n="origen.typography">Typography</h2>
         <div class="type-samples">
-          <p class="type-sample type-sample--rockwell">
-            <span>Aa</span>Rockwell
-          </p>
+          <p class="type-sample type-sample--rockwell">Aa<br />Rockwell</p>
           <p class="type-sample type-sample--showcard">
-            <span>Aa</span>Showcard Gothic
+            Aa<br />Showcard<br />Gothic
           </p>
         </div>
       </section>
+      <!--foto de los vasos -->
       <figure class="photo">
         <img
           src="../img/origen-cafe/14.jpg"
@@ -216,7 +211,11 @@
       <figure class="photo">
         <video
           src="../img/origen-cafe/16_2.mp4"
-          alt="Coffee being poured into an Origen Café cup"
+          autoplay
+          loop
+          muted
+          playsinline
+          aria-label="Coffee being poured into an Origen Café cup"
         ></video>
       </figure>
     </main>

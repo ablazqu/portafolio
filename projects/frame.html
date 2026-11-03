@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FRAME – BLAZ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Barlow Condensed = barra de navegación. Josefin Sans = textos de FRAME (cámbiala por la de tu Figma) -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;800&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Primero los estilos generales, después los de esta página (el orden importa) -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/frame.css">
+</head>
+
+<!-- La clase "page-frame" activa el fondo oscuro -->
+<body class="page-frame">
+
+  <!-- ================= BARRA DE NAVEGACIÓN (igual que en el resto) ================= -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <button class="lang-btn" id="lang-btn" type="button">ES</button>
+
+      <a class="navbar__logo" href="../index.html">
+        <img src="../img/blaz.svg" alt="BLAZ">
+      </a>
+
+      <div class="navbar__info">
+        <p class="navbar__name">Antonia Blázquez A.</p>
+        <nav class="navbar__links" aria-label="Main">
+          <a class="nav-link nav-link--red" href="../index.html#about" data-i18n="nav.about">About</a>
+          <a class="nav-link nav-link--green" href="../index.html#works" data-i18n="nav.works">Works</a>
+          <a class="nav-link nav-link--yellow" href="../index.html#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CONTENIDO ================= -->
+  <main class="content">
+
+    <!-- 1. Video con sonido: se reproduce UNA vez; para verlo de nuevo hay que hacer clic.
+         (video-once.js controla esto. No lleva "loop" ni "autoplay": lo maneja el script.)
+         "poster" = imagen que se ve antes de empezar (opcional pero recomendada). -->
+    <section class="f-intro">
+      <div class="video-once">
+        <video src="../img/frame/clip.mp4"
+               poster="../img/frame/video-1-portada.jpg"
+               playsinline preload="metadata"></video>
+        <button class="video-once__btn" type="button" aria-label="Play video"></button>
+      </div>
+
+      <p data-i18n="frame.details">The style is in the details. FRAME comes packed for jungle windows, bus trips, cinemas or the sun itself. Wherever you're looking, the focus is on you.</p>
+    </section>
+
+    <!-- 2. Imagen + texto -->
+    <section class="f-split">
+      <img src="../img/frame/Free-Subway-Sign-Mockup.jpg" alt="FRAME ad on a street billboard">
+      <p data-i18n="frame.traditional">Traditional eyewear was built to fit in. FRAME wants to stand out. Our Italian collection merges modern streetwear with precision craftsmanship. Designed for the style-conscious individual, each pair aims to turn every street into your runway. Clothes go with the seasons, but perspective is permanent.</p>
+    </section>
+
+    <!-- 3. Video en bucle (sin sonido) -->
+    <section class="f-portrait">
+      <video src="../img/frame/posters.mp4"
+             autoplay loop muted playsinline
+             aria-label="FRAME model wearing sunglasses"></video>
+    </section>
+
+    <!-- Frase -->
+    <p class="f-tagline" data-i18n="frame.tagline">Step out - Stand out - WEAR IT WITH STYLE.</p>
+
+    <!-- 4. Texto + video en bucle (sin sonido) -->
+    <section class="f-mission">
+      <p data-i18n="frame.mission">Our mission remains clear: to connect with modern, style-conscious individuals through frames that make a statement. Every glass tells a story, every frame opens a new perspective. Frame the world around you.</p>
+      <video src="../img/frame/mariiam.mp4"
+             autoplay loop muted playsinline
+             aria-label="FRAME campaign cover"></video>
+    </section>
+
+    <!-- Cierre -->
+    <section class="f-welcome">
+      <p data-i18n="frame.welcome">Welcome to</p>
+      <img src="../img/frame/logo-end.png" alt="FRAME">
+    </section>
+
+  </main>
+
+  <script src="../js/translations.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/video-once.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mink'a – BLAZ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Barlow Condensed = barra de navegación. Poppins = textos de Mink'a (cámbiala por la de tu Figma) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;800&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Primero los estilos generales, después los de esta página (el orden importa) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/minka.css" />
+    <link rel="stylesheet" href="../css/stories.css" />
+    <link rel="stylesheet" href="../css/typewriter.css">
+  </head>
+
+  <!-- La clase "page-minka" activa el fondo con dibujos -->
+  <body class="page-minka">
+    <!-- ================= BARRA DE NAVEGACIÓN (igual que en el resto) ================= -->
+    <header class="navbar">
+      <div class="navbar__inner">
+        <button class="lang-btn" id="lang-btn" type="button">ES</button>
+
+        <a class="navbar__logo" href="../index.html">
+          <img src="../img/blaz.svg" alt="BLAZ" />
+        </a>
+
+        <div class="navbar__info">
+          <p class="navbar__name">Antonia Blázquez A.</p>
+          <nav class="navbar__links" aria-label="Main">
+            <a
+              class="nav-link nav-link--red"
+              href="../index.html#about"
+              data-i18n="nav.about"
+              >About</a
+            >
+            <a
+              class="nav-link nav-link--green"
+              href="../index.html#works"
+              data-i18n="nav.works"
+              >Works</a
+            >
+            <a
+              class="nav-link nav-link--yellow"
+              href="../index.html#contact"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main class="content">
+      <!-- 1. INTRODUCING... + logo circular -->
+      <section class="m-intro">
+        <h1 data-i18n="minka.introducing" data-typewriter>Introducing. . .</h1>
+        <img src="../img/mink'a/logo.jpg" alt="Mink'a logo" />
+      </section>
+
+      <!-- 2. Logo + texto (izquierda) y foto de la polera (derecha) -->
+      <section class="m-about">
+        <div class="m-about__left">
+          <img
+            class="m-about__logo"
+            src="../img/mink'a/logo-png.png"
+            alt="Mink'a"
+          />
+          <p class="m-box" data-i18n="minka.about">
+            Write your project description here.
+          </p>
+        </div>
+        <img
+          class="m-about__photo"
+          src="../img/mink'a/11.jpg"
+          alt="Person wearing a Mink'a t-shirt"
+        />
+      </section>
+
+      <!-- 3. Foto ancha: afiches en la pared -->
+      <figure class="m-photo">
+        <img
+          src="../img/mink'a/12.jpg"
+          alt="Work Mink'a Space posters on a wall, a person walking by"
+        />
+      </figure>
+
+      <!-- 4. Texto + cuadro rosado -->
+      <section class="m-quote">
+  <p class="m-box" data-i18n="minka.quote">True to the meaning of the word, at Mink'a we believe that sharing our ideas and projects, and the diverse perspectives that come with them, helps us grow as a community and refine our work.</p>
+
+  <video class="m-quote__video"
+         src="../img/mink'a/clip.mp4"
+         autoplay loop muted playsinline
+         aria-label="People working together at Mink'a"></video>
+</section>
+      </section>
+
+      <!-- 5. Foto ancha: persona sosteniendo el afiche -->
+      <figure class="m-photo">
+        <img
+          src="../img/mink'a/10.jpg"
+          alt="Person holding a framed Work Mink'a Space poster"
+        />
+      </figure>
+
+      <!-- 6. Mockup de redes sociales (teléfonos) -->
+      <!-- Redes sociales: se desliza como las historias de Instagram.
+     Velocidad: data-interval en milisegundos (4000 = 4 segundos) -->
+      <section
+        class="stories"
+        data-interval="4000"
+        aria-roledescription="carousel"
+        aria-label="Mink'a on social media"
+      >
+        <div class="stories__phone">
+          <div class="stories__bars"></div>
+          <!-- las barritas las crea stories.js -->
+          <ul class="stories__track">
+            <li class="stories__slide">
+              <img
+                src="../img/mink'a/ig3.png"
+                alt="Hand holding a phone showing the Work Mink'a Space post"
+              />
+            </li>
+            <li class="stories__slide">
+              <img
+                src="../img/mink'a/ig2.png"
+                alt="Mink'a Instagram post on a phone"
+              />
+            </li>
+            <li class="stories__slide">
+              <img
+                src="../img/mink'a/ig1.png"
+                alt="Mink'a Instagram story showing a tote bag"
+              />
+            </li>
+          </ul>
+          <button
+            class="stories__tap stories__tap--prev"
+            type="button"
+            aria-label="Previous"
+          ></button>
+          <button
+            class="stories__tap stories__tap--next"
+            type="button"
+            aria-label="Next"
+          ></button>
+        </div>
+      </section>
+
+      <!-- 7. Mockups de la página web (3 pantallas) -->
+      <section class="m-web">
+        <img src="../img/mink'a/web1.png" alt="Mink'a website, screen 1" />
+        <img src="../img/mink'a/web2.png" alt="Mink'a website, screen 2" />
+        <img src="../img/mink'a/web3.png" alt="Mink'a website, screen 3" />
+      </section>
+
+      <!-- 8. Afiche final -->
+      <figure class="m-poster">
+        <img
+          src="../img/mink'a/3V.jpg"
+          alt="Work Mink'a Space poster: spread your creativity, share your ideas, be part of new projects"
+        />
+      </figure>
+    </main>
+
+    <script src="../js/translations.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/stories.js"></script>
+    <script src="../js/typewriter.js"></script>
+  </body>
+</html>

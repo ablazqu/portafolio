@@ -1,0 +1,161 @@
+/* =========================================================
+   PÁGINA DE PROYECTO: FRAME
+   (se carga DESPUÉS de styles.css y lo sobrescribe donde haga falta)
+   ========================================================= */
+body.page-frame {
+  --frame-bg: #1b1b1b;      /* fondo oscuro, como en tu Figma */
+  --frame-text: #f2f2f2;
+
+  /* Esta línea también quita el gif del inicio */
+  background: var(--frame-bg);
+}
+
+/* ---------- Contenedor ---------- */
+body.page-frame .content {
+  max-width: 900px;
+  min-height: 0;
+  gap: 4rem;
+  padding: 3rem 1.5rem 5rem;
+  background: transparent;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--frame-text);
+}
+
+.content p { margin: 0; }
+.content img,
+.content video { display: block; max-width: 100%; }
+
+/* ---------- 1. Video con sonido + texto ---------- */
+.f-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.f-intro > p {
+  max-width: 440px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Video que se reproduce una vez ---------- */
+.video-once {
+  position: relative;
+  width: 100%;
+  max-width: 360px;               /* ancho del video; cámbialo si lo quieres más grande */
+  overflow: hidden;
+  background: #000;
+  border-radius: 0.4rem;
+  line-height: 0;
+}
+.video-once video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Botón invisible que cubre todo el video: el clic en cualquier parte funciona */
+.video-once__btn {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* El icono que se ve en el centro: ▶ al inicio y en pausa, ↻ al terminar */
+.video-once__btn::before {
+  content: "▶";
+  display: grid;
+  place-items: center;
+  width: 4.2rem;
+  height: 4.2rem;
+  padding-left: 0.25rem;          /* centra óptimamente el triángulo */
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition: opacity 0.2s;
+}
+.video-once.is-ended .video-once__btn::before {
+  content: "↻";
+  padding-left: 0;
+  font-size: 2.2rem;
+}
+.video-once.is-playing .video-once__btn::before { opacity: 0; }   /* se oculta mientras reproduce */
+.video-once__btn:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+
+/* ---------- 2. Imagen + texto ---------- */
+.f-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.f-split img { width: 100%; }
+.f-split p,
+.f-mission p { font-size: 0.95rem; }
+
+/* ---------- 3. Video en bucle ---------- */
+.f-portrait { display: flex; justify-content: center; }
+.f-portrait video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* ---------- Frase ---------- */
+.f-tagline {
+  text-align: center;
+  font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+  font-weight: 400;
+}
+
+/* ---------- 4. Texto + video en bucle ---------- */
+.f-mission {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 300px);
+  gap: 3rem;
+  align-items: center;
+}
+.f-mission video {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Cierre ---------- */
+.f-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+.f-welcome p {
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.f-welcome img { height: 3rem; width: auto; }
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+@media (max-width: 700px) {
+  body.page-frame .content { gap: 3rem; }
+  .f-split,
+  .f-mission { grid-template-columns: 1fr; gap: 1.5rem; }
+  .f-mission video { max-width: 260px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-once__btn::before { transition: none; }
+}

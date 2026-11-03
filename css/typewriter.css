@@ -1,0 +1,23 @@
+/* =========================================================
+   EFECTO "MÁQUINA DE ESCRIBIR"
+   ========================================================= */
+
+/* La parte que aún no se escribe ocupa su espacio pero no se ve */
+.tw-rest { visibility: hidden; }
+
+/* Cursor parpadeante al final de lo escrito */
+.tw-typed::after {
+  content: "";
+  display: inline-block;
+  height: 0.85em;
+  border-right: 0.07em solid currentColor;
+  margin-right: -0.07em;          /* el cursor no empuja el texto */
+  vertical-align: -0.05em;
+  animation: tw-blink 0.8s steps(1) infinite;
+}
+@keyframes tw-blink {
+  50% { opacity: 0; }
+}
+
+/* Al terminar de escribir, el cursor se quita */
+[data-typewriter].tw-done .tw-typed::after { display: none; }
