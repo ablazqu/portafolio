@@ -1,0 +1,189 @@
+/* =========================================================
+   PANTALLA DE INICIO: fondo blanco, logo BLAZ e imágenes alrededor
+   Se carga DESPUÉS de styles.css y lo sobrescribe donde haga falta.
+   ========================================================= */
+
+/* ---------- La pantalla blanca ---------- */
+.intro-screen {
+  position: relative;
+  height: 100vh;
+  height: 100svh;                 /* altura real en celulares (sin contar la barra del navegador) */
+  display: grid;
+  place-items: center;
+  /* Blanco que se desvanece: el script baja --intro-alpha de 1 a 0 al hacer scroll */
+  background: rgba(255, 255, 255, var(--intro-alpha, 1));
+}
+
+/* ---------- El escenario ----------
+   Una caja con la proporción de tu diseño (877 x 678). Todo lo que hay dentro
+   se coloca con porcentajes de esta caja, así la composición se ve igual en
+   cualquier tamaño de pantalla (solo cambia la escala). */
+.intro-stage {
+  position: relative;
+  width: min(100%, calc(100vh * 1.2935));
+  width: min(100%, calc(100svh * 1.2935));
+  aspect-ratio: 877 / 678;
+}
+
+/* ---------- Logo grande ---------- */
+.hero-logo {
+  position: absolute;
+  left: 18%;
+  top: 30.8%;
+  width: 64%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Dibujos alrededor del logo ----------
+   left / top = posición (% del escenario)   width = ancho (% del escenario)
+   El alto se calcula solo: los dibujos NO se recortan ni se deforman. */
+.intro-img {
+  position: absolute;
+  display: block;
+  height: auto;
+  opacity: var(--intro-alpha, 1);  /* se desvanecen junto con el fondo blanco */
+}
+.intro-img--a { left: 12%; top: 12%; width: 7%; }   /* checklist, arriba izquierda */
+.intro-img--b { left: 37%; top: 3%; width: 10%; }  /* florero, arriba centro */
+.intro-img--c { left: 79%; top: 14%; width: 8.4%; }   /* nombre, arriba derecha */
+.intro-img--d { left: 5%; top: 57.4%; width: 7.4%; }   /* gato blanco, abajo izquierda */
+.intro-img--e { left: 88%; top: 58.3%; width: 7.8%; }   /* gato negro, abajo derecha */
+
+/* ---------- Dibujos flotando ----------
+   Cada dibujo se mueve suavemente arriba/abajo y se inclina un poco, a su propio ritmo.
+   Usa las propiedades "translate" y "rotate" (no "transform"), así no choca con el parallax.
+   Para cada dibujo:  --fx / --fy = cuánto se mueve (lado / alto)   --fr = cuánto se inclina
+                      --dur = segundos que tarda un ciclo           --delay = desfase (negativo = ya empezado) */
+.intro-img {
+  --fx: 0.5vmin;
+  --fy: 1vmin;
+  --fr: 1.5deg;
+  --dur: 7s;
+  --delay: 0s;
+  animation: img-float var(--dur) ease-in-out var(--delay) infinite;
+}
+.intro-img--a { --fx: 0.6vmin; --fy: 1.2vmin; --fr: 2deg;   --dur: 7s;   --delay: -1s; }
+.intro-img--b { --fx: 0.4vmin; --fy: 1.4vmin; --fr: 1.5deg; --dur: 8.5s; --delay: -3s; }
+.intro-img--c { --fx: 0.7vmin; --fy: 1vmin;   --fr: 2.5deg; --dur: 6.5s; --delay: -2s; }
+.intro-img--d { --fx: 0.4vmin; --fy: 0.9vmin; --fr: 1.5deg; --dur: 7.5s; --delay: -4s; }
+.intro-img--e { --fx: 0.5vmin; --fy: 1vmin;   --fr: 2deg;   --dur: 9s;   --delay: -5s; }
+@keyframes img-float {
+  0%, 100% { translate: 0 0;                                            rotate: 0deg; }
+  33%      { translate: var(--fx) calc(var(--fy) * -1);                 rotate: var(--fr); }
+  66%      { translate: calc(var(--fx) * -1) calc(var(--fy) * -0.4);    rotate: calc(var(--fr) * -1); }
+}
+
+/* ---------- Flecha parpadeante + "SCROLL!" ---------- */
+.intro-screen__hint {
+  position: absolute;
+  left: 43.6%;
+  top: 74.6%;
+  width: 21.9%;
+  aspect-ratio: 192 / 124;
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.hint-arrow {
+  position: absolute;
+  left: 0;
+  top: 8%;
+  width: 58.9%;                    /* tamaño de la flecha */
+  height: auto;
+  display: block;
+  animation: hint-blink 1.4s ease-in-out infinite;
+}
+.hint-text {
+  position: absolute;
+  left: 54.2%;
+  top: 0;
+  width: 45.8%;                    /* tamaño de la palabra SCROLL */
+  height: auto;
+  display: block;
+  /* Para que SCROLL también parpadee, quita los marcadores de comentario de la línea siguiente: */
+  /* animation: hint-blink 1.4s ease-in-out infinite; */
+}
+@keyframes hint-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.1; }
+}
+
+/* Al empezar a hacer scroll, la flecha y el SCROLL desaparecen */
+.intro-screen.is-scrolled .intro-screen__hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- La barra ahora es fija (flota sobre la página) ----------
+   Así la pantalla blanca ocupa toda la ventana y el logo queda bien colocado. */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: border-color 0.4s;
+}
+
+/* El contenido empieza justo debajo de la barra */
+.content {
+  padding-top: calc(var(--nav-h, 9rem) + 2rem);
+}
+
+/* ---------- Mientras dura la animación (la clase "js-intro" la pone la página) ----------
+   Al principio la barra está vacía y transparente, para que solo se vea la pantalla de inicio.
+   Si el script falla o la persona pidió "menos movimiento", esta clase no existe
+   y la barra se ve completa desde el principio. */
+.js-intro .navbar {
+  background: rgba(255, 255, 255, var(--nav-alpha, 0));
+  border-bottom-color: transparent;
+}
+.js-intro .navbar.is-visible { border-bottom-color: #333; }
+
+.js-intro .navbar__info,
+.js-intro .lang-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0s linear 0.4s;
+}
+.js-intro .navbar.is-visible .navbar__info,
+.js-intro .navbar.is-visible .lang-btn {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s;
+}
+
+/* El logo pequeño de la barra lo dibuja el script (el que viaja desde el centro) */
+.js-intro .navbar__logo img { visibility: hidden; }
+
+/* =========================================================
+   CELULAR (pantalla vertical): otra distribución
+   ========================================================= */
+@media (max-width: 700px) {
+  .intro-stage {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+  .hero-logo { left: 6%; top: 40%; width: 88%; }
+
+  .intro-img--a { left: 6%;  top: 15%; width: 24%; }   /* checklist */
+  .intro-img--b { left: 35%; top: 6%;  width: 30%; }   /* florero */
+  .intro-img--c { left: 68%; top: 17%; width: 26%; }   /* nombre */
+  .intro-img--d { left: 6%;  top: 63%; width: 20%; }   /* gato blanco */
+  .intro-img--e { left: 74%; top: 63%; width: 20%; }   /* gato negro */
+
+  .intro-screen__hint {
+    left: 50%;
+    top: auto;
+    bottom: 6%;
+    width: 52%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint-arrow,
+  .hint-text,
+  .intro-img { animation: none; }
+}

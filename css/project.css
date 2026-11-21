@@ -2,19 +2,25 @@
    PÁGINA DE PROYECTO: ORIGEN CAFÉ
    (se carga DESPUÉS de styles.css y lo sobrescribe donde haga falta)
    ========================================================= */
-body.project {
+body.project,
+body.page-origen {
   --origen-cream: #e9debf;
   --origen-brown: #502a17;
   --origen-red: #bf403d;
 
   /* Rojo oscuro de fondo. Esta línea también quita el gif del inicio */
   background: #a22a29;
+
+  /* Evita que el efecto hover de las tarjetas del inicio (.project) afecte a toda la página */
+  transform: none !important;
+  transition: none !important;
 }
 
 /* ---------- Hojas de fondo ----------
    Una capa fija con una imagen a cada lado. Se queda quieta al hacer scroll.
    Funciona también en móvil (a diferencia de background-attachment: fixed). */
-body.project::before {
+body.project::before,
+body.page-origen::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -33,7 +39,8 @@ body.project::before {
 }
 
 /* ---------- Contenedor ---------- */
-body.project .content {
+body.project .content,
+body.page-origen .content {
   max-width: 900px;
   min-height: 0;
   gap: 2.5rem;
@@ -251,7 +258,8 @@ body.project .content {
    MÓVIL
    ========================================================= */
 @media (max-width: 700px) {
-  body.project::before {
+  body.project::before,
+  body.page-origen::before {
     background-size:
       auto 60%,
       auto 60%;

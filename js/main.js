@@ -8,7 +8,11 @@ if (grid) {
         <a class="project" href="${project.url}">
           <img class="project__cover" src="${project.cover}" alt="">
           <img class="project__frame" src="img/marco.svg" alt="">
-          <span class="visually-hidden">${project.title}</span>
+          <span class="project__hover" aria-hidden="true">
+            <span class="project__tags project__tags--en">${project.tags.en}</span>
+            <span class="project__tags project__tags--es">${project.tags.es}</span>
+          </span>
+          <span class="visually-hidden">${project.title}. ${project.tags.en}</span>
         </a>
       `;
     })

@@ -102,13 +102,25 @@ p {
 }
 
 .nav-link {
-  font-weight: 800;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
   font-size: 1.6rem;
+  letter-spacing: 0.08em; /* separación entre letras */
   text-transform: uppercase;
   text-decoration: none;
   padding: 0 0.6rem 0.1rem;
   border-left: 2px solid var(--accent);
   border-bottom: 2px solid var(--accent);
+  transition: color 0.2s, background-color 0.2s;
+}
+/* Al pasar el cursor, las letras se vuelven blancas sobre el color del botón */
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #fff;
+}
+/* En español las palabras son más largas: menos separación entre letras */
+html[lang="es"] .nav-link {
+  letter-spacing: 0.02em;
 }
 .nav-link--red {
   --accent: var(--red);
@@ -155,8 +167,8 @@ p {
     255,
     255,
     255,
-    0.85
-  ); /* baja o sube el 0.85 para más o menos opacidad */
+    0.92
+  ); /* baja o sube el 0.92 para más o menos opacidad */
   display: flex;
   flex-direction: column;
   gap: 5rem;
@@ -187,14 +199,20 @@ p {
 .profile__box {
   background: #d9d9d9;
   padding: 1.25rem 1.5rem;
+  /* el cuerpo (bio) usa la tipografía original de la página */
 }
 .profile__name {
   margin: 0;
+  font-family: "Londrina Solid", sans-serif;
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 900; /* nombre en bold (el peso más grueso de Londrina Solid) */
+  letter-spacing: 0.03em;
 }
 .profile__role {
-  font-weight: 800;
+  font-family: "Londrina Solid", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900; /* Londrina Solid no tiene semibold: se distingue con menor tamaño y más espacio */
+  letter-spacing: 0.08em;
 }
 
 /* Avatar + texto + herramientas */
@@ -264,6 +282,56 @@ p {
   pointer-events: none; /* el clic pasa al enlace */
 }
 
+/* ---------- Cuadro que aparece al pasar el cursor ---------- */
+.project {
+  transition: transform 0.3s ease;
+}
+.project:hover,
+.project:focus-visible {
+  transform: translateY(-4px) scale(1.02);   /* leve elevación de toda la tarjeta */
+}
+
+.project__hover {
+  font-family: "Londrina Solid", sans-serif;
+  position: absolute;
+  inset: 9% 10% 10% 9%;            /* mismo hueco que la foto de portada */
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.85); /* blanco semitransparente: baja el 0.85 para más transparencia */
+  color: #141414;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;            /* el clic pasa al enlace */
+}
+.project:hover .project__hover,
+.project:focus-visible .project__hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Solo se muestra el texto del idioma activo */
+html[lang="en"] .project__tags--es,
+html[lang="es"] .project__tags--en { display: none; }
+
+/* En pantallas táctiles no hay cursor: el cuadro no aparece */
+@media (hover: none) {
+  .project__hover { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project,
+  .project__hover { transition: none; }
+}
+
 /* =========================================================
    CONTACT
    ========================================================= */
@@ -271,21 +339,87 @@ p {
   display: flex;
   justify-content: center;
 }
+/* Nota de papel (post_it.svg) con el email y el Instagram dentro.
+   Todo se coloca con porcentajes de la nota, así se mantiene igual en cualquier tamaño. */
 .note {
-  width: 300px;
-  aspect-ratio: 3 / 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 3rem 1.5rem 1.5rem;
-  background: url("../img/nota.svg") center / 100% 100% no-repeat;
-  text-align: center;
+  position: relative;
+  width: min(100%, 360px);              /* tamaño de la nota */
+  aspect-ratio: 606.95 / 780.09;        /* proporción del archivo post_it.svg */
+  background: url("../img/post_it.svg") center / 100% 100% no-repeat;
+  container-type: inline-size;          /* permite que el texto escale con la nota */
+  /* Sombra de papel sobre una superficie: una pegada al borde (contacto) y otra suave y más larga.
+     Sube o baja los últimos números (0.3 y 0.28) para más o menos sombra. */
+  filter:
+    drop-shadow(0 3px 3px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 16px 18px rgba(0, 0, 0, 0.28));
 }
 .note__line {
-  font-size: 1.2rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-size: 5.4cqw;                    /* 5.4 % del ancho de la nota */
+  white-space: nowrap;
   text-decoration: none;
+  transform: translateY(-50%);
+}
+.note__line--mail { left: 16%; top: 48%; }   /* posición del email */
+.note__line--ig   { left: 18%; top: 62%; }   /* posición del Instagram */
+
+/* Título de la nota, como el encabezado de un checklist */
+.note__title {
+  position: absolute;
+  left: 50%;                            /* centrado en la hoja */
+  top: 33%;                             /* posición del título */
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 7.4cqw;                    /* tamaño del título */
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.note__icon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+.note__line:hover span,
+.note__line--mail:hover { text-decoration: underline; }
+
+/* ---------- La nota cae como una hoja de papel ---------- */
+.note--armed {
+  opacity: 0;                           /* oculta hasta que cae */
+  transform-origin: 50% 0;              /* se balancea desde arriba */
+}
+.note--drop {
+  /* dos animaciones: aparece rápido (note-fade) y cae con suavidad (note-drop) */
+  animation:
+    note-fade 0.3s ease-out forwards,
+    note-drop 1s linear forwards;
+  will-change: transform, opacity;                         /* movimiento más fluido */
+}
+@keyframes note-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+/* Pocos puntos y cada tramo con su propia suavidad: sin tirones entre ellos */
+@keyframes note-drop {
+  0%   { transform: translate3d(-14px, -90px, 0) rotate(-9deg);   animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95); }
+  45%  { transform: translate3d(10px, -24px, 0)  rotate(5deg);    animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95); }  /* oscila al caer */
+  75%  { transform: translate3d(-3px, -3px, 0)   rotate(-1.5deg); animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95); }
+  100% { transform: translate3d(0, 0, 0)         rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .note--drop { animation: note-fade 0.3s ease-out forwards; }
 }
 
 /* =========================================================
@@ -321,5 +455,92 @@ p {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+/* ---------- Botones anterior / siguiente ---------- */
+.side-btn {
+  position: fixed;
+  top: 67%; /* altura del botón: sube o baja este número */
+  z-index: 90; /* sobre el contenido, bajo la barra */
+  display: block;
+  width: 5.4rem; /* tamaño del botón */
+  aspect-ratio: 221.86 / 217.73;      /* proporción de boton1.svg */
+  container-type: inline-size;        /* el texto escala con el botón */
+  text-decoration: none;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+  /* sombra negra desplazada abajo-izquierda, como los botones About / Works / Contact */
+  filter: drop-shadow(-0.25rem 0.25rem 0 #111);
+}
+/* Relleno blanco (queda detrás del contorno dibujado) */
+.side-btn__fill {
+  position: absolute;
+  inset: 3.5%;
+  background: #fff;
+  border-radius: 8%;
+}
+/* Contorno dibujado: img/boton1.svg */
+.side-btn img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Texto dentro del botón */
+.side-btn__text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 15%;
+  text-align: center;
+  white-space: pre-line;              /* respeta el salto de línea del texto */
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 17cqw;                   /* tamaño del texto */
+  line-height: 1.1;                   /* interlineado */
+  letter-spacing: 0.07em;             /* separación entre letras */
+  text-transform: uppercase;
+  color: #111;
+}
+html[lang="es"] .side-btn__text {
+  font-size: 14cqw;                   /* en español las palabras son más largas */
+}
+.side-btn--prev {
+  left: 1.5rem;
+}
+.side-btn--next {
+  right: 1.5rem;
+}
+
+.side-btn:hover,
+.side-btn:focus-visible {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* En celular van más pequeños y abajo, para no tapar el contenido */
+@media (max-width: 700px) {
+  .side-btn {
+    top: auto;
+    bottom: 1rem;
+    width: 5.2rem;
+    transform: none;
+  }
+  .side-btn:hover,
+  .side-btn:focus-visible {
+    transform: scale(1.1);
+  }
+  .side-btn--prev {
+    left: 0.75rem;
+  }
+  .side-btn--next {
+    right: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-btn {
+    transition: none;
   }
 }

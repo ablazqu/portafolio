@@ -3,9 +3,13 @@ const translations = {
     "nav.about": "About",
     "nav.works": "Works",
     "nav.contact": "Contact",
+    "note.title": "GET IN TOUCH",
+    "btn.back": "Go\nback!",
+    "btn.forward": "Move\nforward",
+    "btn.projects": "Back to\nprojects",
     "profile.role": "Graphic Design",
     "profile.bio":
-      "Average Millenial who decide to bring the stuff from her satirical mind to the creative work.Passionate about develop memorable projects, hopefully involving the physical world so everyone can have a piece of it.Pretty much into: visual identity, storytelling and packaging.",
+      "I am currently studying Graphic Design and Web Development at Jönköping University. I am interested in being part of creative projects that involve branding, storytelling, UI, and packaging. I enjoy embodying the personality of each project so that it is easily recognizable to the audience.",
     "intro.p1":
       "Currently studying graphic design, I'm interested in being part of projects that people would experience beyond the screen.",
     "intro.p2":
@@ -38,14 +42,18 @@ const translations = {
     "nav.about": "Sobre mí",
     "nav.works": "Trabajos",
     "nav.contact": "Contacto",
+    "note.title": "CONTÁCTAME",
+    "btn.back": "¡Atrás!",
+    "btn.forward": "¡Avanza!",
+    "btn.projects": "Volver a\nproyectos",
     "profile.role": "Diseño gráfico",
     "profile.bio":
       "Proyecto de diseñadora a quien tambien llaman Antonia. Me gusta conocer la personalidad de cada proyecto aprender como plasmarla con mi trabajo. Desarrollo un storytelling para plasmar una identidad visual con contenido más allá de la estética. La idea es que las personas quieran conocer el proyecto e incorporarlo a sus vidas.",
-    "intro.p1":
-      "Actualmente estudiante de diseño gráfico y desarrollo web.",
+    "intro.p1": "Actualmente estudiante de diseño gráfico y desarrollo web.",
     "intro.p2":
       "Soy fan del buen sentido del humor, ese que no solo busca hacerte reír, sino mostrar una perspectiva distinta de una situación. Uso mi creatividad para encontrar y mostrar la personalidad de cada proyecto.",
-    "intro.p3": "Buscame para realizar: fotografías, contenido web, campañas (impresas y web), diseño de envases.",
+    "intro.p3":
+      "Buscame para realizar: fotografías, contenido web, campañas (impresas y web), diseño de envases.",
     // dentro de es: { ... }
     "origen.intro":
       "Desde las tierras de Perú hasta nuestro día a día en Suecia, el café viaja mucho más allá de su origen. En el camino, une a las personas, crea momentos y construye conexiones que quizás ni notamos.",
@@ -55,7 +63,8 @@ const translations = {
     "origen.typography": "Tipografía",
     // dentro de es: { ... }
     "minka.introducing": "Presentando. . .",
-    "minka.about": "Nuestro estudio ofrece espacios tanto para el trabajo individual como grupal, además de áreas comunes donde puedes conectar con otras personas y despejar la mente ante un bloqueo creativo. ¿No tienes ningún proyecto entre manos en este momento, pero te gustaría conocer el trabajo de nuestros miembros? Organizamos talleres y presentaciones. ¡Síguenos en Instagram para mantenerte al tanto!",
+    "minka.about":
+      "Nuestro estudio ofrece espacios tanto para el trabajo individual como grupal, además de áreas comunes donde puedes conectar con otras personas y despejar la mente ante un bloqueo creativo. ¿No tienes ningún proyecto entre manos en este momento, pero te gustaría conocer el trabajo de nuestros miembros? Organizamos talleres y presentaciones. ¡Síguenos en Instagram para mantenerte al tanto!",
     "minka.quote":
       "Fiel al significado de la palabra, en Mink'a creemos que compartir nuestras ideas, proyectos, y diferentes perspectivas que surgen con ellos, nos ayuda a crecer como comunidad y a perfeccionar nuestro trabajo.",
     // dentro de es: { ... }

@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Barlow Condensed = barra de navegación. Zilla Slab y Alfa Slab One = sustitutos de Rockwell y Showcard Gothic -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@300;400;800&family=Zilla+Slab:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@300;400;800&family=Londrina+Solid:wght@100;400;900&family=Zilla+Slab:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
     <!-- Primero los estilos generales, después los de esta página (el orden importa) -->
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/project.css" />
+      <link rel="stylesheet" href="../css/smooth.css" />
   </head>
 
   <!-- La clase "project" activa el fondo de hojas en lugar del gif -->
@@ -95,15 +96,24 @@
         <div class="logos__variants">
           <h2 data-i18n="origen.variants">Variants</h2>
           <div class="variants-grid">
-           <div class="logo-tile logo-tile--cream">
-  <img src="../img/origen-cafe/logo-crema-letras.svg" alt="Logo variant 1" />
-</div>
-<div class="logo-tile logo-tile--cream">
-  <img src="../img/origen-cafe/logo.crema.svg" alt="Logo variant 2" />
-</div>
-<div class="logo-tile logo-tile--cream">
-  <img src="../img/origen-cafe/icono-crema.svg" alt="Logo variant 3" />
-</div>
+            <div class="logo-tile logo-tile--cream">
+              <img
+                src="../img/origen-cafe/logo-crema-letras.svg"
+                alt="Logo variant 1"
+              />
+            </div>
+            <div class="logo-tile logo-tile--cream">
+              <img
+                src="../img/origen-cafe/logo.crema.svg"
+                alt="Logo variant 2"
+              />
+            </div>
+            <div class="logo-tile logo-tile--cream">
+              <img
+                src="../img/origen-cafe/icono-crema.svg"
+                alt="Logo variant 3"
+              />
+            </div>
             <div class="logo-tile">
               <img
                 src="../img/origen-cafe/logo-cafeletras.svg"
@@ -219,9 +229,28 @@
         ></video>
       </figure>
     </main>
-
+    <a
+      class="side-btn side-btn--prev"
+      href="../index.html#works"
+      aria-label="Back to projects"
+    >
+      <span class="side-btn__fill"></span>
+      <img src="../img/boton1.svg" alt="" />
+      <span class="side-btn__text" data-i18n="btn.projects">Back to projects</span>
+    </a>
+    <a
+      class="side-btn side-btn--next"
+      href="minka.html"
+      aria-label="Next project: Mink'a"
+    >
+      <span class="side-btn__fill"></span>
+      <img src="../img/boton1.svg" alt="" />
+      <span class="side-btn__text" data-i18n="btn.forward">Move forward</span>
+    </a>
     <script src="../js/translations.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/carousel.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="../js/smooth.js"></script>
   </body>
 </html>

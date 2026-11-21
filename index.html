@@ -9,18 +9,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;800&family=Londrina+Solid:wght@100;400;900&display=swap"
       rel="stylesheet"
     />
-
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("js-intro");
+      }
+    </script>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/intro.css" />
+      <link rel="stylesheet" href="css/smooth.css" />
   </head>
   <body>
     <!-- ================= BARRA DE NAVEGACIÓN (fija arriba) ================= -->
     <header class="navbar">
       <div class="navbar__inner">
-        <a class="navbar__logo" href="#top">
-          <img src="img/blaz.svg" alt="BLAZ" />
+        <a class="navbar__logo" href="#intro" aria-label="BLAZ, back to top">
+          <img src="img/blaz.svg" alt="" />
         </a>
 
         <div class="navbar__info">
@@ -49,10 +55,26 @@
         <button class="lang-btn" id="lang-btn" type="button">ES</button>
       </div>
     </header>
+    <section class="intro-screen" id="intro">
+      <div class="intro-stage">
+        <img id="hero-logo" class="hero-logo" src="img/blaz.svg" alt="BLAZ" />
 
+        <!-- Imágenes alrededor: a, b, e = rectángulos; c, d = círculos -->
+        <img class="intro-img intro-img--a" src="img/checklist.svg" alt="" />
+        <img class="intro-img intro-img--b" src="img/florero.svg" alt="" />
+        <img class="intro-img intro-img--c" src="img/nombrecito.svg" alt="" />
+        <img class="intro-img intro-img--d" src="img/gatoblanco.svg" alt="" />
+        <img class="intro-img intro-img--e" src="img/gatonegro.svg" alt="" />
+
+        <!-- Flecha + SCROLL (vectores) -->
+        <a class="intro-screen__hint" href="#about" aria-label="Scroll down">
+          <img class="hint-arrow" src="img/flecha-scroll.svg" alt="" />
+          <img class="hint-text" src="img/scroll!.svg" alt="" />
+        </a>
+      </div>
+    </section>
     <!-- ================= CONTENIDO (fondo blanco semitransparente) ================= -->
     <main class="content" id="top">
-      <img src="img/blaz.svg" alt="BLAZ" />
       <!-- ---------- ABOUT ---------- -->
       <section class="about" id="about">
         <!-- Tarjeta con foto + nombre (si no la quieres, borra este bloque) -->
@@ -66,11 +88,11 @@
             <h1 class="profile__name">Antonia Blázquez Aravena</h1>
             <p class="profile__role" data-i18n="profile.role">Graphic Design</p>
             <p class="profile__bio" data-i18n="profile.bio">
-              Average Millenial who decide to bring the stuff from her satirical
-              mind to the creative work. Passionate about develop memorable
-              projects, hopefully involving the physical world so everyone can
-              have a piece of it. Pretty much into: visual identity,
-              storytelling and packaging.
+              I am currently studying Graphic Design and Web Development at
+              Jönköping University. I am interested in being part of creative
+              projects that involve branding, storytelling, UI, and packaging. I
+              enjoy embodying the personality of each project so that it is
+              easily recognizable to the audience.
             </p>
           </div>
         </article>
@@ -121,16 +143,23 @@
       <section class="contact" id="contact">
         <h2 class="visually-hidden">Contact</h2>
         <div class="note">
-          <a class="note__line" href="mailto:tu-correo@gmail.com"
+          <p class="note__title" data-i18n="note.title">GET IN TOUCH</p>
+          <a class="note__line note__line--mail" href="mailto:ablazaravena@gmail.com"
             >ablazaravena@gmail.com</a
           >
           <a
-            class="note__line"
+            class="note__line note__line--ig"
             href="https://www.instagram.com/blazz._/"
             target="_blank"
             rel="noopener"
-            >@blazz._</a
+            aria-label="Instagram @blazz._"
           >
+            <svg class="note__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+            </svg>
+            <span>@blazz._</span>
+          </a>
         </div>
       </section>
     </main>
@@ -139,5 +168,9 @@
     <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/brand-scroll.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="js/smooth.js"></script>
+      <script src="js/note-drop.js"></script>
   </body>
 </html>

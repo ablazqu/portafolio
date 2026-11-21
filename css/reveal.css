@@ -1,0 +1,19 @@
+/* =========================================================
+   APARICIÓN SUAVE DEL CONTENIDO AL HACER SCROLL
+   Efecto leve: el contenido sube unos pocos píxeles mientras aparece.
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);          /* cuánto sube: más píxeles = efecto más marcado */
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sin animación si la persona pidió "reducir movimiento" */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
