@@ -33,6 +33,9 @@ function setLanguage(lang) {
     }
   });
 
+  // Vuelve a dibujar el personaje elegido en el nuevo idioma (js/characters.js)
+  if (typeof renderCharacter === 'function') renderCharacter();
+
   // El botón muestra el idioma al que se puede cambiar
   langButton.textContent = lang === 'en' ? 'ES' : 'EN';
   langButton.setAttribute('aria-label', lang === 'en' ? 'Cambiar a español' : 'Switch to English');

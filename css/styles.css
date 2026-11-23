@@ -144,16 +144,22 @@ html[lang="es"] .nav-link {
   position: absolute;
   top: 0.75rem;
   right: 1.5rem;
-  font: inherit;
-  font-weight: 800;
-  padding: 0.1rem 0.7rem;
-  background: none;
-  border: 2px solid var(--ink);
+  width: 3.2rem;                               /* tamaño del botón */
+  aspect-ratio: 221.86 / 217.73;               /* proporción de boton1.svg */
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;                           /* tamaño de las letras */
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink);
+  border: 0;
+  border-radius: 8%;
+  /* marco dibujado (boton1.svg) sobre relleno blanco; sin sombra ni efecto hover */
+  background: url("../img/boton1.svg") center / 100% 100% no-repeat, #fff;
   cursor: pointer;
-}
-.lang-btn:hover {
-  background: var(--ink);
-  color: var(--paper);
 }
 /* =========================================================
    CONTENIDO (blanco semitransparente sobre el gif)
@@ -215,32 +221,177 @@ html[lang="es"] .nav-link {
   letter-spacing: 0.08em;
 }
 
-/* Avatar + texto + herramientas */
+/* Dibujo al centro + punteo + herramientas (sin tarjeta) */
 .intro {
-  display: grid;
-  grid-template-columns: minmax(120px, 180px) 1fr;
-  gap: 1.5rem;
-  align-items: center;
-}
-.intro__avatar {
-  width: 100%;
-}
-
-.intro__body {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;                   /* baja toda esta sección: sube o baja este número */
 }
-.intro__text {
-  background: var(--paper);
-  padding: 1.25rem 1.5rem;
+
+/* Elegir personaje: título + botones 1, 2, 3 */
+.chooser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
-.intro__text p:last-child {
-  margin-bottom: 0;
+.chooser__title {
+  margin: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.chooser__buttons {
+  display: flex;
+  gap: 0.9rem;
+}
+/* Botones 1, 2, 3: misma estética que "Go back!" / "Move forward" (img/boton1.svg) */
+.chooser__btn {
+  position: relative;
+  width: 3.6rem;                              /* tamaño del botón */
+  aspect-ratio: 221.86 / 217.73;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  filter: drop-shadow(-0.2rem 0.2rem 0 #111); /* sombra negra abajo-izquierda */
+  transition: transform 0.2s;
+}
+.chooser__fill {
+  position: absolute;
+  inset: 3.5%;
+  background: #fff;                           /* relleno blanco */
+  border-radius: 8%;
+  transition: background-color 0.2s;
+}
+.chooser__btn img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.chooser__num {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: #111;
+  transition: color 0.2s;
+}
+.chooser__btn:hover:not(:disabled),
+.chooser__btn:focus-visible {
+  transform: scale(1.1);
+}
+/* Botón elegido: relleno negro y número blanco */
+.chooser__btn.is-active .chooser__fill {
+  background: #111;
+}
+.chooser__btn.is-active .chooser__num {
+  color: #fff;
+}
+.chooser__btn:disabled {
+  opacity: 0.35;                              /* personaje todavía sin dibujo */
+  cursor: not-allowed;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chooser__btn,
+  .chooser__fill,
+  .chooser__num {
+    transition: none;
+  }
+}
+
+/* Desvanecido al cambiar de personaje */
+.character,
+.intro__list {
+  transition: opacity 0.22s ease;
+}
+.character.is-swapping,
+.intro__list.is-swapping {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .character,
+  .intro__list {
+    transition: none;
+  }
+}
+
+/* Personaje: título arriba y dibujo debajo */
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;                       /* espacio entre el título y el dibujo */
+}
+.character__title {
+  margin: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;                  /* tamaño del título */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+}
+.intro__avatar {
+  width: min(100%, 200px);            /* tamaño del dibujo */
+  height: auto;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);   /* velocidad del giro */
+}
+/* Al pasar el cursor, el dibujo se voltea horizontalmente */
+.intro__avatar:hover {
+  transform: perspective(800px) rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro__avatar {
+    transition: none;
+  }
+}
+
+/* Punteo con la descripción del personaje */
+.intro__list {
+  width: min(100%, 640px);
+  margin: 0;
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;                       /* espacio entre puntos */
+}
+.intro__list li::marker {
+  color: #141414;
+}
+
+/* Mensaje + programas */
+.intro__tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.intro__tools-title {
+  margin: 0;
+  font-family: "Londrina Solid", sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-align: center;
 }
 
 .tools {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   list-style: none;
   margin: 0;
@@ -443,8 +594,7 @@ html[lang="es"] .project__tags--en { display: none; }
     gap: 1.25rem;
   }
 
-  .profile,
-  .intro {
+  .profile {
     grid-template-columns: 1fr;
   }
   .intro__avatar {

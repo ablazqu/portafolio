@@ -97,31 +97,30 @@
           </div>
         </article>
 
-        <!-- Avatar + texto + herramientas -->
+        <!-- Elige personaje + dibujo + punteo + herramientas.
+             Los textos y dibujos de cada personaje están en js/characters.js -->
         <div class="intro">
-          <img
-            class="intro__avatar"
-            src="img/doodle1.svg"
-            alt="Illustrated self-portrait holding a mug"
-          />
+          <div class="chooser">
+            <h2 class="chooser__title" data-i18n="choose.title">Choose your poison</h2>
+            <div class="chooser__buttons" role="group" aria-label="Characters"></div>
+          </div>
 
-          <div class="intro__body">
-            <div class="intro__text">
-              <p data-i18n="intro.p1">
-                Currently studying graphic design, I'm interested in being part
-                of projects that people would experience beyond the screen.
-              </p>
-              <p data-i18n="intro.p2">
-                I'm a fan of good sense of humor that does not just try to make
-                you laugh but to show a different perspective from a situation.
-                I use my creativity to find and show the personality of each
-                project.
-              </p>
-              <p data-i18n="intro.p3">
-                I specialized on storytelling, packaging and photography.
-              </p>
-            </div>
+          <div class="character">
+            <h2 class="character__title">Average Millenial</h2>
+            <img
+              class="intro__avatar"
+              src="img/doodle.svg"
+              alt="Illustrated self-portrait: Average Millenial"
+            />
+          </div>
 
+          <ul class="intro__list"></ul>
+
+          <!-- Mensaje + programas que manejo -->
+          <div class="intro__tools">
+            <p class="intro__tools-title" data-i18n="tools.title">
+              I can handle these tools
+            </p>
             <ul class="tools">
               <li><img src="img/illustrator.svg" alt="Adobe Illustrator" /></li>
               <li><img src="img/photoshop.svg" alt="Adobe Photoshop" /></li>
@@ -166,8 +165,9 @@
 
     <!-- projects.js primero (los datos), main.js después (los usa) -->
     <script src="js/projects.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/characters.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/brand-scroll.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="js/smooth.js"></script>
