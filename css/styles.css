@@ -161,6 +161,21 @@ html[lang="es"] .nav-link {
   background: url("../img/boton1.svg") center / 100% 100% no-repeat, #fff;
   cursor: pointer;
 }
+/* Dibujo "flecha idioma": señala el botón ES/EN (img/flecha-idioma.svg) */
+.lang-hint {
+  position: absolute;
+  top: 2.1rem;                                 /* altura respecto al borde de la barra */
+  right: 5.05rem;                              /* distancia al borde derecho (queda a la izquierda del botón) */
+  width: 2.8rem;                               /* tamaño del dibujo */
+  height: auto;
+  pointer-events: none;                        /* no estorba al hacer clic */
+}
+@media (max-width: 700px) {
+  .lang-hint {
+    display: none;                             /* en celular no hay espacio en la barra */
+  }
+}
+
 /* =========================================================
    CONTENIDO (blanco semitransparente sobre el gif)
    ========================================================= */

@@ -9,13 +9,16 @@
 const characters = [
   {
     img: "img/doodle.svg",
-    alt: { en: "Illustrated self-portrait: Average Millenial", es: "Autorretrato ilustrado: Millenial promedio" },
+    alt: {
+      en: "Illustrated self-portrait: Average Millenial",
+      es: "Autorretrato ilustrado: Millenial promedio",
+    },
     title: { en: "Average Millenial", es: "Millenial promedio" },
     items: {
       en: [
         "Dark humor",
         "Coffee (please)",
-        "Creative and multi-task (cry and work at the same time)",
+        "Creative and multi-task ( can cry and work at the same time)",
         "Can get the things done (and on time!)",
         "Trained in kitchens (can handle the stress.)",
       ],
@@ -30,23 +33,43 @@ const characters = [
   },
   {
     img: "img/doodle2.svg",
-    alt: { en: "Illustrated self-portrait: Photographer", es: "Autorretrato ilustrado: Fotógrafa" },
+    alt: {
+      en: "Illustrated self-portrait: Photographer",
+      es: "Autorretrato ilustrado: Fotógrafa",
+    },
     title: { en: "Photographer", es: "Fotógrafa" },
     // ✏️ Textos de ejemplo: cámbialos por los tuyos
     items: {
+      en: ["Street photography", "Portrait", "Art director"],
+      es: ["Fotografía del día a día", "Retratos", "Dirección de arte"],
+    },
+  },
+  {
+    img: "img/doodle3.svg",
+    alt: {
+      en: "Illustrated self-portrait: Graphic Designer",
+      es: "Autorretrato ilustrado: Diseñador Gráfico",
+    },
+    title: { en: "Graphic designer", es: "Desiñador Gráfico" },
+    // ✏️ Textos de ejemplo: cámbialos por los tuyos
+    items: {
       en: [
-        "Sees the world in frames",
-        "Always carries a camera",
-        "Chases the good light",
+        "Branding & storytelling",
+        "Web content",
+        "Packaging design",
+        "Editorial",
+        "Printable material and merch.",
       ],
       es: [
-        "Ve el mundo en encuadres",
-        "Siempre lleva una cámara",
-        "Persigue la buena luz",
+        "Branding e storytelling",
+        "Diseño web",
+        "Diseño de packaging",
+        "Diseño editorial",
+        "Todo aquello que puedas imprimir y/o poseer (merch)",
       ],
     },
   },
-  { soon: true }, // personaje 3: pendiente
+  //{ soon: true },
 ];
 
 let currentCharacter = 0;
@@ -64,7 +87,9 @@ function renderCharacter() {
   img.src = c.img;
   img.alt = c.alt[lang];
   stage.querySelector(".intro__list").innerHTML = c.items[lang]
-    .map(function (t) { return "<li>" + t + "</li>"; })
+    .map(function (t) {
+      return "<li>" + t + "</li>";
+    })
     .join("");
   stage.querySelectorAll(".chooser__btn").forEach(function (b, i) {
     const on = i === currentCharacter;
@@ -79,11 +104,18 @@ function renderCharacter() {
   if (!wrap) return;
   wrap.innerHTML = characters
     .map(function (c, i) {
-      return '<button type="button" class="chooser__btn" data-index="' + i + '"' +
-        (c.soon ? " disabled" : "") + ">" +
+      return (
+        '<button type="button" class="chooser__btn" data-index="' +
+        i +
+        '"' +
+        (c.soon ? " disabled" : "") +
+        ">" +
         '<span class="chooser__fill"></span>' +
         '<img src="img/boton1.svg" alt="">' +
-        '<span class="chooser__num">' + (i + 1) + "</span></button>";
+        '<span class="chooser__num">' +
+        (i + 1) +
+        "</span></button>"
+      );
     })
     .join("");
 
@@ -93,11 +125,15 @@ function renderCharacter() {
     const next = Number(btn.dataset.index);
     if (next === currentCharacter) return;
     const swap = document.querySelectorAll(".character, .intro__list");
-    swap.forEach(function (el) { el.classList.add("is-swapping"); });   // se desvanece
+    swap.forEach(function (el) {
+      el.classList.add("is-swapping");
+    }); // se desvanece
     setTimeout(function () {
       currentCharacter = next;
       renderCharacter();
-      swap.forEach(function (el) { el.classList.remove("is-swapping"); });
+      swap.forEach(function (el) {
+        el.classList.remove("is-swapping");
+      });
     }, 220);
   });
 })();

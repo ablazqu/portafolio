@@ -141,12 +141,14 @@
 .js-intro .navbar.is-visible { border-bottom-color: #333; }
 
 .js-intro .navbar__info,
+.js-intro .lang-hint,
 .js-intro .lang-btn {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s, visibility 0s linear 0.4s;
 }
 .js-intro .navbar.is-visible .navbar__info,
+.js-intro .navbar.is-visible .lang-hint,
 .js-intro .navbar.is-visible .lang-btn {
   opacity: 1;
   visibility: visible;

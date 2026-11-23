@@ -12,19 +12,19 @@ const projects = [
   {
     title: "Origen Café",
     cover: "img/origen-cafe/logo3.png",
-    url: "projects/origen.html",
+    url: "projects/origen.html?v=20261125",
     tags: { en: "Branding - Packaging", es: "Branding - Packaging" },
   },
   {
     title: "Mink'a",
     cover: "img/mink'a/logo.jpg",
-    url: "projects/minka.html",
+    url: "projects/minka.html?v=20261125",
     tags: { en: "Branding - Poster - Web", es: "Branding - Afiche - Web" },
   },
   {
     title: "FRAME",
     cover: "img/frame/frame.svg",
-    url: "projects/frame.html",
+    url: "projects/frame.html?v=20261125",
     tags: { en: "Branding - Art direction", es: "Branding - Dirección de arte" },
   },
 ];
